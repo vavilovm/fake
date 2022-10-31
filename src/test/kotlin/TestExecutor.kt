@@ -58,8 +58,9 @@ class TestExecutor {
 
     @Test
     fun testPartUpToDate() {
-        File(javaClass.getResource("/testPartUpToDate/main").path).takeIf { it.exists() }?.delete()
-
+        javaClass.getResource("/testPartUpToDate/main")?.let { url ->
+            File(url.path).takeIf { it.exists() }?.delete()
+        }
         val res = testFile(
             arrayOf("build"), "/testPartUpToDate/fake.yml"
         )
