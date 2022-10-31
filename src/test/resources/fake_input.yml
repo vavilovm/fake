@@ -1,0 +1,4 @@
+get_input:
+  run:
+    'echo start; read input; echo $input'
+

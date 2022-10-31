@@ -1,0 +1,11 @@
+world:
+  dependencies:
+    - hello
+  target: world
+  run: echo world
+
+
+hello:
+  target: hello
+  run: echo hello
+
