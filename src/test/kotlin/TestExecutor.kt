@@ -1,6 +1,7 @@
 import com.charleskorn.kaml.Yaml
 import kotlinx.serialization.builtins.MapSerializer
 import kotlinx.serialization.builtins.serializer
+import org.apache.commons.lang3.SystemUtils
 import org.junit.jupiter.api.assertThrows
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -49,6 +50,8 @@ class TestExecutor {
 
     @Test
     fun testPartUpToDate() {
+        if (SystemUtils.IS_OS_WINDOWS) return
+
         val fileName = "/testUpToDate/fake.yml"
 
         val res1 = testFile(arrayOf("compile"), fileName)
@@ -90,7 +93,7 @@ class TestExecutor {
                 )
             )
         )
-        assertEquals("hello\nworld", res)
+        assertEquals("hello${System.lineSeparator()}world", res)
     }
 
     @Test
