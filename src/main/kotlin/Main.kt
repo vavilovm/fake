@@ -7,7 +7,7 @@ import kotlin.system.exitProcess
 fun main(args: Array<String>) {
     Logger.getLogger("").apply { level = Level.OFF }
     try {
-        FakeTaskExecutor(args, File("fake.yaml").inputStream(), System.out).execute()
+        FakeTaskExecutor(args, File("fake.yml").inputStream(), System.out).execute()
     } catch (e: FileNotFoundException) {
         System.err.println("File not found: ${e.message}")
         exitProcess(1)
