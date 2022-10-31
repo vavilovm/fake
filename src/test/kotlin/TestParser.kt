@@ -25,7 +25,7 @@ class TestParser {
                 "compile" to FakeTask(
                     listOf("main.c"),
                     "main.o",
-                    "gcc -c main.c -o main.o"
+                    "gcc -c main.c -o main.o; echo compile"
                 ),
 
                 "build" to FakeTask(
