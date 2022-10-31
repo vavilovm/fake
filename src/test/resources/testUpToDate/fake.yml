@@ -2,10 +2,10 @@ compile:
   dependencies:
     - main.c
   target: main.o
-  run: gcc -c main.c -o main.o
+  run: gcc -c main.c -o main.o; echo compile
 
 build:
   dependencies:
     - compile
   target: main
-  run: gcc main.o -o main
+  run: gcc main.o -o main; echo build

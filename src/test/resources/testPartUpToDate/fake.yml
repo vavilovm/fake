@@ -2,7 +2,7 @@ compile:
   dependencies:
     - main.c
   target: main.o
-  run: gcc -c main.c -o main.o
+  run: gcc -c main.c -o main.o; echo compile
 
 build:
   dependencies:

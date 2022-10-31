@@ -46,27 +46,24 @@ class TestExecutor {
         }
     }
 
-    @Test
-    fun testUpToDate() {
-        val res = testFile(
-            arrayOf("build"), "/testUpToDate/fake.yml"
-        )
-        assertEquals(
-            "Task compile is up to date.\n" + "Task build is up to date.", res
-        )
-    }
 
     @Test
     fun testPartUpToDate() {
-        javaClass.getResource("/testPartUpToDate/main")?.let { url ->
+        val fileName = "/testUpToDate/fake.yml"
+
+        val res1 = testFile(arrayOf("compile"), fileName)
+        val res2 = testFile(arrayOf("build"), fileName)
+        val res3 = testFile(arrayOf("build"), fileName)
+        assertEquals("compile", res1)
+        assertEquals("Task compile is up to date.\nbuild", res2)
+        assertEquals("Task compile is up to date.\nTask build is up to date.", res3)
+
+        javaClass.getResource("/testUpToDate/main")?.let { url ->
             File(url.path).takeIf { it.exists() }?.delete()
         }
-        val res = testFile(
-            arrayOf("build"), "/testPartUpToDate/fake.yml"
-        )
-        assertEquals(
-            "Task compile is up to date.\nbuild", res
-        )
+        javaClass.getResource("/testUpToDate/main.o")?.let { url ->
+            File(url.path).takeIf { it.exists() }?.delete()
+        }
     }
 
     @Test

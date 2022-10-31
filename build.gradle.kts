@@ -32,7 +32,3 @@ tasks.withType<KotlinCompile> {
 application {
     mainClass.set("MainKt")
 }
-
-//tasks.named<JavaExec>("run") {
-//    standardInput = System.`in`
-//}
